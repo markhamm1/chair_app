@@ -1,0 +1,11 @@
+<%# <p>This is the index</p> %>
+
+<% @chairs.each do |chair| %>
+  <p> id: <%=chair.id%></p>
+  <p> color: <%=chair.color%></p>
+  <p> weight: <%=chair.weight%></p>
+  <p> legs: <%=chair.legs%></p>
+  <p> style: <%=chair.style%></p>
+  <p> image_url: <img src= "<%=chair.image_url%>" width="200" ></p>
+  <p> </p>
+<% end %>
