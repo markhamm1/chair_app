@@ -8,4 +8,20 @@ class ChairsController < ApplicationController
     @chair = Chair.find_by(id: params[:id])
     render 'show.html.erb'
   end
+
+  def new
+    render 'new.html.erb'
+  end
+
+  def create
+    @chair = Chair.new(
+      color: params[:color],
+      weight: params[:weight],
+      legs: params[:legs],
+      style: params[:style],
+      image_url: params[:image_url]
+    )
+    @chair.save
+    redirect_to "/chairs/#{@chair.id}"
+  end
 end
