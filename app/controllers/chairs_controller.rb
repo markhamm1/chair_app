@@ -21,13 +21,16 @@ class ChairsController < ApplicationController
       style: params[:style],
       image_url: params[:image_url]
     )
-    @chair.save
-    redirect_to "/chairs/#{@chair.id}"
+    if @chair.save
+      redirect_to "/chairs/#{@chair.id}"
+    else
+      render json: {errors: @chair.errors.full_messages}
+    end
   end
 
   def edit
     @chair = Chair.find_by(id: params[:id])
-    render 'update.html.erb'
+    render 'edit.html.erb'
   end
 
   def update
@@ -40,5 +43,11 @@ class ChairsController < ApplicationController
       image_url: params[:image_url]  
     )
     redirect_to "/chairs/#{@chair.id}"
+  end
+
+  def destroy
+    @chair = Chair.find_by(id: params[:id])
+    @chair.destroy
+    redirect_to "/chairs"
   end
 end

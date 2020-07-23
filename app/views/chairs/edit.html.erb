@@ -9,3 +9,8 @@ this is the update
   <p>Image URL: <input type="text" name="image_url" value="<%= @chair.image_url %>"></p>
   <input type="submit" value="Update Chair">
 </form>
+
+<form action="/chairs/<%= @chair.id %>%" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Chair">
+</form>
